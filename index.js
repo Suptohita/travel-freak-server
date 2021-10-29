@@ -12,7 +12,7 @@ app.use(express.json())
 
 
 app.get('/', (req, res) => {
-    res.send('Server Running')
+    res.send('Server Running....')
 })
 
 app.listen(port, () => {
