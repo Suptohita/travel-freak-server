@@ -27,11 +27,10 @@ async function run() {
 
         
         // Get API 
-        app.get('/destinations', (req, res) => {
-            console.log('reached destinations...')
-            destinationsCollection.find({}).toArray((req, result) =>{
-                res.send(result)
-            })
+        app.get('/destinations', async(req, res) => {
+            const cursor = destinationsCollection.find({})
+            const destinations = await cursor.toArray()
+            res.send(destinations)
         })
     }
 
@@ -48,9 +47,6 @@ app.get('/', (req, res) => {
     res.send('Server Running....')
 })
 
-app.get('/hello', (req, res) =>{
-    res.send('hello world')
-})
 
 // Listening port 
 app.listen(port, () => {
