@@ -41,6 +41,7 @@ async function run() {
             const query = {_id: ObjectId(id)}
             const service = await destinationsCollection.findOne(query)
             res.send(service)
+            console.log(service)
         })
 
 
@@ -59,12 +60,31 @@ async function run() {
             res.send(userOrders)
         })
 
+
         // delete user order 
         app.delete('/myorders/deleteorder/:id', async(req, res) => {
+            console.log('hello')
             const id = req.params.id
             const query = {_id: ObjectId(id)}
             const result = await bookingCollection.deleteOne(query)
             res.send(result)
+        })
+
+
+        // manage all order
+        app.get('/manageallorders', async(req, res) => {
+            const cursor = bookingCollection.find({})
+            const allOrders = await cursor.toArray()
+            res.send(allOrders)
+        })
+
+        // manage all order delete 
+        app.delete('/manageallorders/deleteorder/:id', async(req, res) => {
+            const id = req.params.id
+            const query = {_id: ObjectId(id)}
+            const result = await bookingCollection.deleteOne(query)
+            res.send(result)
+            console.log('working')
         })
     
     }
