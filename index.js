@@ -84,7 +84,13 @@ async function run() {
             const query = {_id: ObjectId(id)}
             const result = await bookingCollection.deleteOne(query)
             res.send(result)
-            console.log('working')
+        })
+
+        // for add destination
+        app.post('/addnewplace', async(req, res) => {
+            const data = req.body 
+            const result = await destinationsCollection.insertOne(data)
+            res.send(result)
         })
     
     }
