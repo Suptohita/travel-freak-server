@@ -27,7 +27,6 @@ async function run() {
         const bookingCollection = database.collection('booked-destinations')
 
 
-        
         // Get API for home
         app.get('/destinations', async(req, res) => {
             const cursor = destinationsCollection.find({})
@@ -52,7 +51,7 @@ async function run() {
             res.send(result)
         })
 
-        
+
         // load data from database for showing user order 
         app.get('/myorders', async(req, res) => {
             const cursor = bookingCollection.find({})
