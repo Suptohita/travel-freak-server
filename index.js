@@ -35,6 +35,7 @@ async function run() {
             res.send(destinations)
         })
 
+
         // Get Specific destination with id for placeorder
         app.get('/destinations/:id', async(req, res) => {
             const id = req.params.id;
@@ -43,6 +44,7 @@ async function run() {
             res.send(service)
         })
 
+
         // add booking data to database 
         app.post('/booking', async(req, res) =>{
             const data = req.body
@@ -50,6 +52,7 @@ async function run() {
             res.send(result)
         })
 
+        
         // load data from database for showing user order 
         app.get('/myorders', async(req, res) => {
             const cursor = bookingCollection.find({})
